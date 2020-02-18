@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">43144653169-jtm7cund9487ikn50ovpett7ckc4k1kr.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://healthcard-97dd6.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">43144653169</string>
+    <string name="google_api_key" translatable="false">AIzaSyDUg0Ud6cwqINT8rBEDcfRVSsU_iimMVZo</string>
+    <string name="google_app_id" translatable="false">1:43144653169:android:5f3abefbd799524c916ed0</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDUg0Ud6cwqINT8rBEDcfRVSsU_iimMVZo</string>
+    <string name="google_storage_bucket" translatable="false">healthcard-97dd6.appspot.com</string>
+    <string name="project_id" translatable="false">healthcard-97dd6</string>
+</resources>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "43144653169",
+    "firebase_url": "https://healthcard-97dd6.firebaseio.com",
+    "project_id": "healthcard-97dd6",
+    "storage_bucket": "healthcard-97dd6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:43144653169:android:5f3abefbd799524c916ed0",
+        "android_client_info": {
+          "package_name": "com.harsh.healthcard"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "43144653169-ns5s1837m3an82n9u7tahndihkcffvm6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.harsh.healthcard",
+            "certificate_hash": "c78c56545a6dd1a8b8a28051537e18f15ebe7952"
+          }
+        },
+        {
+          "client_id": "43144653169-jtm7cund9487ikn50ovpett7ckc4k1kr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUg0Ud6cwqINT8rBEDcfRVSsU_iimMVZo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "43144653169-jtm7cund9487ikn50ovpett7ckc4k1kr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

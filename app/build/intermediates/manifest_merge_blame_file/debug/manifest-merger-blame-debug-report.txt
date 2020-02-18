@@ -1,0 +1,99 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.harsh.healthcard"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->/root/drive1/github/HealthCard/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="29" />
+9-->/root/drive1/github/HealthCard/app/src/main/AndroidManifest.xml
+10
+11    <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
+12    <!-- <uses-sdk android:minSdkVersion="14"/> -->
+13    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+13-->[com.google.firebase:firebase-database:19.2.1] /root/.gradle/caches/transforms-2/files-2.1/40d203d0674822dbdfc1bb4103e3a3d4/firebase-database-19.2.1/AndroidManifest.xml:25:5-79
+13-->[com.google.firebase:firebase-database:19.2.1] /root/.gradle/caches/transforms-2/files-2.1/40d203d0674822dbdfc1bb4103e3a3d4/firebase-database-19.2.1/AndroidManifest.xml:25:22-76
+14    <uses-permission android:name="android.permission.INTERNET" />
+14-->[com.google.firebase:firebase-database:19.2.1] /root/.gradle/caches/transforms-2/files-2.1/40d203d0674822dbdfc1bb4103e3a3d4/firebase-database-19.2.1/AndroidManifest.xml:26:5-67
+14-->[com.google.firebase:firebase-database:19.2.1] /root/.gradle/caches/transforms-2/files-2.1/40d203d0674822dbdfc1bb4103e3a3d4/firebase-database-19.2.1/AndroidManifest.xml:26:22-64
+15
+16    <application
+16-->/root/drive1/github/HealthCard/app/src/main/AndroidManifest.xml:6:5-20:19
+17        android:allowBackup="true"
+17-->/root/drive1/github/HealthCard/app/src/main/AndroidManifest.xml:7:9-35
+18        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+18-->[androidx.core:core:1.1.0] /root/.gradle/caches/transforms-2/files-2.1/331630a23dfa1f0594bcf54d5352aa36/core-1.1.0/AndroidManifest.xml:24:18-86
+19        android:debuggable="true"
+20        android:icon="@mipmap/ic_launcher"
+20-->/root/drive1/github/HealthCard/app/src/main/AndroidManifest.xml:8:9-43
+21        android:label="@string/app_name"
+21-->/root/drive1/github/HealthCard/app/src/main/AndroidManifest.xml:9:9-41
+22        android:roundIcon="@mipmap/ic_launcher_round"
+22-->/root/drive1/github/HealthCard/app/src/main/AndroidManifest.xml:10:9-54
+23        android:supportsRtl="true"
+23-->/root/drive1/github/HealthCard/app/src/main/AndroidManifest.xml:11:9-35
+24        android:testOnly="true"
+25        android:theme="@style/AppTheme.NoActionbar" >
+25-->/root/drive1/github/HealthCard/app/src/main/AndroidManifest.xml:12:9-52
+26        <activity android:name="com.harsh.healthcard.MainActivity" >
+26-->/root/drive1/github/HealthCard/app/src/main/AndroidManifest.xml:14:9-19:20
+26-->/root/drive1/github/HealthCard/app/src/main/AndroidManifest.xml:14:19-47
+27            <intent-filter>
+27-->/root/drive1/github/HealthCard/app/src/main/AndroidManifest.xml:15:13-18:29
+28                <action android:name="android.intent.action.MAIN" />
+28-->/root/drive1/github/HealthCard/app/src/main/AndroidManifest.xml:16:17-69
+28-->/root/drive1/github/HealthCard/app/src/main/AndroidManifest.xml:16:25-66
+29
+30                <category android:name="android.intent.category.LAUNCHER" />
+30-->/root/drive1/github/HealthCard/app/src/main/AndroidManifest.xml:17:17-77
+30-->/root/drive1/github/HealthCard/app/src/main/AndroidManifest.xml:17:27-74
+31            </intent-filter>
+32        </activity>
+33
+34        <service
+34-->[com.google.firebase:firebase-database:19.2.1] /root/.gradle/caches/transforms-2/files-2.1/40d203d0674822dbdfc1bb4103e3a3d4/firebase-database-19.2.1/AndroidManifest.xml:29:9-35:19
+35            android:name="com.google.firebase.components.ComponentDiscoveryService"
+35-->[com.google.firebase:firebase-database:19.2.1] /root/.gradle/caches/transforms-2/files-2.1/40d203d0674822dbdfc1bb4103e3a3d4/firebase-database-19.2.1/AndroidManifest.xml:30:13-84
+36            android:directBootAware="true"
+36-->[com.google.firebase:firebase-common:19.3.0] /root/.gradle/caches/transforms-2/files-2.1/6afd9f2b464e6b86363d6d9540a5c9f3/jetified-firebase-common-19.3.0/AndroidManifest.xml:34:13-43
+37            android:exported="false" >
+37-->[com.google.firebase:firebase-database:19.2.1] /root/.gradle/caches/transforms-2/files-2.1/40d203d0674822dbdfc1bb4103e3a3d4/firebase-database-19.2.1/AndroidManifest.xml:31:13-37
+38            <meta-data
+38-->[com.google.firebase:firebase-database:19.2.1] /root/.gradle/caches/transforms-2/files-2.1/40d203d0674822dbdfc1bb4103e3a3d4/firebase-database-19.2.1/AndroidManifest.xml:32:13-34:85
+39                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
+39-->[com.google.firebase:firebase-database:19.2.1] /root/.gradle/caches/transforms-2/files-2.1/40d203d0674822dbdfc1bb4103e3a3d4/firebase-database-19.2.1/AndroidManifest.xml:33:17-109
+40                android:value="com.google.firebase.components.ComponentRegistrar" />
+40-->[com.google.firebase:firebase-database:19.2.1] /root/.gradle/caches/transforms-2/files-2.1/40d203d0674822dbdfc1bb4103e3a3d4/firebase-database-19.2.1/AndroidManifest.xml:34:17-82
+41        </service>
+42
+43        <activity
+43-->[com.google.android.gms:play-services-base:17.0.0] /root/.gradle/caches/transforms-2/files-2.1/b989d78505a527364775fcd163b70614/play-services-base-17.0.0/AndroidManifest.xml:23:9-26:75
+44            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+44-->[com.google.android.gms:play-services-base:17.0.0] /root/.gradle/caches/transforms-2/files-2.1/b989d78505a527364775fcd163b70614/play-services-base-17.0.0/AndroidManifest.xml:24:13-79
+45            android:exported="false"
+45-->[com.google.android.gms:play-services-base:17.0.0] /root/.gradle/caches/transforms-2/files-2.1/b989d78505a527364775fcd163b70614/play-services-base-17.0.0/AndroidManifest.xml:25:13-37
+46            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+46-->[com.google.android.gms:play-services-base:17.0.0] /root/.gradle/caches/transforms-2/files-2.1/b989d78505a527364775fcd163b70614/play-services-base-17.0.0/AndroidManifest.xml:26:13-72
+47
+48        <provider
+48-->[com.google.firebase:firebase-common:19.3.0] /root/.gradle/caches/transforms-2/files-2.1/6afd9f2b464e6b86363d6d9540a5c9f3/jetified-firebase-common-19.3.0/AndroidManifest.xml:26:9-30:39
+49            android:name="com.google.firebase.provider.FirebaseInitProvider"
+49-->[com.google.firebase:firebase-common:19.3.0] /root/.gradle/caches/transforms-2/files-2.1/6afd9f2b464e6b86363d6d9540a5c9f3/jetified-firebase-common-19.3.0/AndroidManifest.xml:27:13-77
+50            android:authorities="com.harsh.healthcard.firebaseinitprovider"
+50-->[com.google.firebase:firebase-common:19.3.0] /root/.gradle/caches/transforms-2/files-2.1/6afd9f2b464e6b86363d6d9540a5c9f3/jetified-firebase-common-19.3.0/AndroidManifest.xml:28:13-72
+51            android:exported="false"
+51-->[com.google.firebase:firebase-common:19.3.0] /root/.gradle/caches/transforms-2/files-2.1/6afd9f2b464e6b86363d6d9540a5c9f3/jetified-firebase-common-19.3.0/AndroidManifest.xml:29:13-37
+52            android:initOrder="100" />
+52-->[com.google.firebase:firebase-common:19.3.0] /root/.gradle/caches/transforms-2/files-2.1/6afd9f2b464e6b86363d6d9540a5c9f3/jetified-firebase-common-19.3.0/AndroidManifest.xml:30:13-36
+53
+54        <meta-data
+54-->[com.google.android.gms:play-services-basement:17.0.0] /root/.gradle/caches/transforms-2/files-2.1/d4c24c72c476de3d491e93e9a38a24e1/jetified-play-services-basement-17.0.0/AndroidManifest.xml:23:9-25:69
+55            android:name="com.google.android.gms.version"
+55-->[com.google.android.gms:play-services-basement:17.0.0] /root/.gradle/caches/transforms-2/files-2.1/d4c24c72c476de3d491e93e9a38a24e1/jetified-play-services-basement-17.0.0/AndroidManifest.xml:24:13-58
+56            android:value="@integer/google_play_services_version" />
+56-->[com.google.android.gms:play-services-basement:17.0.0] /root/.gradle/caches/transforms-2/files-2.1/d4c24c72c476de3d491e93e9a38a24e1/jetified-play-services-basement-17.0.0/AndroidManifest.xml:25:13-66
+57    </application>
+58
+59</manifest>
