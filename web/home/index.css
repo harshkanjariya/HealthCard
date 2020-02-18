@@ -1,0 +1,44 @@
+body{
+	font-family: sans-serif;
+	margin: 0px;
+}
+input:focus{
+	outline: none;
+	font-size: 18px;
+}
+#head{
+	font-size: 30px;
+	position: relative;
+	top: 80px;
+}
+table{
+	position: relative;
+	margin-top: 90px;
+}
+table tr td{
+	font-size: 18px;
+}
+header{
+	width: 100vw;
+	height: 50px;
+	background: whitesmoke;
+	position: fixed;
+	box-shadow: 0px 1px 10px #ccc;
+}
+header ul{
+	list-style-type: none;
+	position: fixed;
+	right: 0px;
+	margin: 0px 100px;
+}
+header ul li{
+	float: left;
+	height: 50px;
+	background: whitesmoke;
+	line-height: 50px;
+	padding: 0px 30px;
+	transition: 1s;
+}
+header ul li:hover{
+	background: white;
+}

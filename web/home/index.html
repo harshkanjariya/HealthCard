@@ -22,29 +22,7 @@
 			};
 			firebase.initializeApp(firebaseConfig);
 		</script>
-		<style media="screen">
-			body{
-				font-family: sans-serif;
-				margin: 0px;
-			}
-			input:focus{
-				outline: none;
-				font-size: 18px;
-			}
-			#head{
-				font-size: 30px;
-				margin-top: 20px;
-			}
-			table tr td{
-				font-size: 18px;
-			}
-			header{
-				width: 100vw;
-				height: 50px;
-				background: #64ffff;
-				margin-top: 0px;
-			}
-		</style>
+		<link rel="stylesheet" type="text/css" href="index.css">
 	</head>
 	<body>
 		<header>
@@ -66,6 +44,18 @@
 						<td>Last Name:</td>
 						<td><input type="text" name="ln"/></td>
 					</tr>
+					<tr>
+						<td>Mobile:</td>
+						<td><input type="text" name="mo"/></td>
+					</tr>
+					<tr>
+						<td>City:</td>
+						<td><input type="text" name="ct"/></td>
+					</tr>
+					<tr>
+						<td>State:</td>
+						<td><input type="text" name="st"/></td>
+					</tr>
 				</table>
 			</form>
 		<button onclick="submitdata()">Submit</button>
@@ -74,10 +64,22 @@
 			var db=firebase.database();
 			var ref=db.ref();
 			var form=document.forms[0];
+			var inittime=0;
+			ref.child('time').once('value').then(function(snap){
+				inittime=parseInt(snap.val());
+			});
 			function submitdata(argument){
 				var fn=form.fn.value;
 				var ln=form.ln.value;
-				ref.child('patient/'+new Date().getTime()).set({firstname:fn,lastname:ln});
+				var ct=form.ct.value;
+				var st=form.st.value;
+				var data={
+					firstname:fn,
+					lastname:ln,
+					city:ct,
+					state:st
+				};
+				ref.child('patient/'+(new Date().getTime()-inittime)).set(data);
 			}
 		</script>
 	</body>
