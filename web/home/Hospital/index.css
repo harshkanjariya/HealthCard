@@ -16,6 +16,11 @@ header{
 	top: 0px;
 	box-shadow: 0px 1px 10px #ccc;
 }
+header #heading{
+	float: left;
+	line-height: 50px;
+	margin-left: 100px;
+}
 header ul{
 	list-style-type: none;
 	position: fixed;
@@ -48,13 +53,13 @@ button{
 	padding: 5px;
 	font-size: 18px;
 }
-#logindiv{
+#patientdiv{
 	margin-top: 100px;
 }
-#registerdiv{
+#doctordiv{
 	display: none;
 	margin-top: 100px;
 }
-#registerdiv #head{
+#doctordiv #head{
 	font-size: 20px;
 }

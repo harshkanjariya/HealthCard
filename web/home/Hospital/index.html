@@ -12,17 +12,16 @@
 		<script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-storage.js"></script>
 		<script>
 			var cuki=document.cookie;
-			if(cuki.indexOf('=')>0)
+			var id='';
 			if(cuki.substr(0,cuki.indexOf('='))=="health"){
-				var id=cuki.substr(cuki.indexOf('=')+1);
-				if(id.length!=0){
-					if(id[0]=='H')
-						location.replace('Hospital/');
-					else if(id[0]=='D')
-						location.replace('Doctor/');
-					else if(id[0]=='L')
-						location.replace('Lab/');
+				id=cuki.substr(cuki.indexOf('=')+1);
+				if(id.length==0){
+					location.replace('../');
+				}else{
+					id=id.substr(1);
 				}
+			}else{
+				location.replace('../');
 			}
 			var firebaseConfig = {
 				apiKey: "AIzaSyCrxJKJakJcxbXForiLiuwRQJc7FcVrzbg",
@@ -39,23 +38,17 @@
 		<link rel="stylesheet" type="text/css" href="index.css">
 	</head>
 	<body>
-		<header>
+ 		<header>
+ 			<span id="heading">Hospital</span>
 			<ul>
 				<li onclick="menuclicked(0)">Home</li>
-				<li onclick="menuclicked(1)">Register</li>
-				<li onclick="menuclicked(2)">Login</li>
+				<li onclick="menuclicked(1)">Patients</li>
+				<li onclick="menuclicked(2)">Doctors</li>
+				<li onclick="menuclicked(3)">Notifications</li>
 			</ul>
 		</header>
 		<center>
-			<div id="logindiv" class="pages">
-				<form>
-					<input type="text" name="id" placeholder="Username"><br>
-					<input type="text" name="ps" placeholder="Password">
-				</form>
-				<button onclick="login()">Login</button>
-			</div>
-			<div id="registerdiv" class="pages">
-				<span id="head">Hospital Details</span>
+			<div id="patientdiv" class="pages">
 				<form>
 					<table>
 						<tr>
@@ -63,7 +56,58 @@
 							<td><input type="text" name="nm"/></td>
 						</tr>
 						<tr>
-							<td>Phone<span class="require">*</span> :</td>
+							<td>Mobile<span class="require">*</span> :</td>
+							<td><input type="text" name="ph"/></td>
+						</tr>
+						<tr>
+							<td>Email :</td>
+							<td><input type="email" name="em"/></td>
+						</tr>
+						<tr>
+							<td>Date of birth<span class="require">*</span> :</td>
+							<td><input type="date" name="dob"/></td>
+						</tr>
+						<tr>
+							<td>Bloodgroup<span class="require">*</span> :</td>
+							<td><input type="text" name="bg"/></td>
+						</tr>
+						<tr>
+							<td>Height(cm) :</td>
+							<td><input type="number" name="he"/></td>
+						</tr>
+						<tr>
+							<td>Weight(kg) :</td>
+							<td><input type="number" name="we"/></td>
+						</tr>
+						<tr>
+							<td>Address<span class="require">*</span> :</td>
+							<td><input type="text" name="addr"/></td>
+						</tr>
+						<tr>
+							<td>City<span class="require">*</span> :</td>
+							<td><input type="text" name="ct"/></td>
+						</tr>
+						<tr>
+							<td>State<span class="require">*</span> :</td>
+							<td><input type="text" name="st"/></td>
+						</tr>
+						<tr>
+							<td>Nation<span class="require">*</span> :</td>
+							<td><input type="text" name="nt"/></td>
+						</tr>
+					</table>
+				</form>
+				<button onclick="addpatient()">Login</button>
+			</div>
+			<div id="doctordiv" class="pages">
+				<form>
+					<table>
+						<tr>
+							<td>Name<span class="require">*</span> :</td>
+							<td><input type="text" name="nm"/></td>
+						</tr>
+						<tr>
+							<td>Mobile<span class="require">*</span> :</td>
 							<td><input type="text" name="ph"/></td>
 						</tr>
 						<tr>
@@ -92,76 +136,94 @@
 						</tr>
 					</table>
 				</form>
-				<button onclick="submitdata()">Submit</button>
+				<button onclick="adddoctor()">Submit</button>
 			</div>
 		</center>
 		<script>
 			var db=firebase.database();
 			var ref=db.ref();
-			var form=document.forms[1];
-			var lform=document.forms[0];
+			var dform=document.forms[1];
+			var pform=document.forms[0];
 			var inittime=0;
+			var data='';
 			ref.child('time').once('value').then(function(snap){
 				inittime=parseInt(snap.val());
 			});
-			function submitdata(argument){
-				var nm=form.nm.value;
-				var ph=form.ph.value;
-				var em=form.em.value;
-				var ct=form.ct.value;
-				var st=form.st.value;
-				var nt=form.nt.value;
-				var ps=form.ps.value;
-				var rps=form.rps.value;
+			ref.child('hospital/'+id).once('value').then(function(snap){
+				var d=snap.val();
+				if (d==null){
+					location.replace('../');
+				}else{
+					delete d.password;
+					data=d;
+					$('header #heading').html(data.name);
+				}
+			});
+			function addpatient(argument){
+				var nm=pform.nm.value;
+				var ph=pform.ph.value;
+				var em=pform.em.value;
+				var dob=pform.dob.value;
+				var bg=pform.bg.value;
+				var he=pform.he.value;
+				var we=pform.we.value;
+				var addr=pform.addr.value;
+				var ct=pform.ct.value;
+				var st=pform.st.value;
+				var nt=pform.nt.value;
 				if(nm.length==0){
-					form.nm.focus();
+					pform.nm.focus();
 				}
 				else if(ph.length==0){
-					form.ph.focus();
+					pform.ph.focus();
 				}
-				else if(em.length==0){
-					form.em.focus();
+				else if(dob.length==0){
+					pform.dob.focus();
+				}
+				else if(bg.length==0){
+					pform.bg.focus();
+				}
+				else if(addr.length==0){
+					pform.addr.focus();
 				}
 				else if(ct.length==0){
-					form.ct.focus();
+					pform.ct.focus();
 				}
 				else if(st.length==0){
-					form.st.focus();
+					pform.st.focus();
 				}
 				else if(nt.length==0){
-					form.nt.focus();
-				}
-				else if(ps.length==0){
-					form.ps.focus();
-				}
-				else if(rps!=ps){
-					form.rps.focus();
+					pform.nt.focus();
 				}else{
 					var data={
 						name:nm,
-						password:ps,
 						phone:ph,
-						email:em,
+						dob:dob,
+						bloodgroup:bg,
+						address:addr,
 						city:ct,
 						state:st,
 						nation:nt
 					};
-					var dt=new Date().getTime()-inittime;
-					ref.child('hospital/'+dt).set(data).then(function(snap){
-						var cuki='health=H'+dt+'; expires='+(new Date(9999999999999).toGMTString())+'; path=/';
-						document.cookie=cuki;
-						location.replace('Hospital/');
+					if(em.length>2)
+						data.email=em;
+					if(he.length>0)
+						data.height=he;
+					if(we.length>0)
+						data.weight=we;
+					ref.child('patient/'+(new Date().getTime()-inittime)).set(data).then(function(snap){
+						pform.reset();
 					});
 				}
 			}
-			function login(){
-				var un=lform.id.value;
-				var ps=lform.ps.value;
+			function adddoctor(){
+				var un=ldform.id.value;
+				var ps=ldform.ps.value;
 				if(un.length==0){
-					lform.un.focus();
+					ldform.un.focus();
 				}
 				else if(ps.length==0){
-					lform.ps.focus();
+					ldform.ps.focus();
 				}else{
 					var key='';
 					if(un[0]=='H')
@@ -176,12 +238,10 @@
 						var d=snap.val();
 						if(d==null){
 							alert('Username Not Found!');
-						}else if(d.password!=ps){
+						}else if(d!=ps){
 							alert('Password incorrect!');
 						}else{
-							var cuki='health='+un+'; expires='+(new Date(9999999999999).toGMTString())+'; path=/';
-							document.cookie=cuki;
-							location.replace('Hospital/');
+							console.log('logged in');
 						}
 					});
 				}
@@ -192,13 +252,13 @@
 					case 0:
 						break;
 					case 1:
-						$('#registerdiv').show();
+						$('#patientdiv').show();
 						break;
 					case 2:
-						$('#logindiv').show();
+						$('#doctordiv').show();
 						break;
 				}
 			}
 		</script>
-	</body>
+ 	</body>
 </html>

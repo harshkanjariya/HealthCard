@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>HealthCard</title>
+		<script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-auth.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-database.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-messaging.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-storage.js"></script>
+		<script>
+			var firebaseConfig = {
+				apiKey: "AIzaSyCrxJKJakJcxbXForiLiuwRQJc7FcVrzbg",
+				authDomain: "healthcard-97dd6.firebaseapp.com",
+				databaseURL: "https://healthcard-97dd6.firebaseio.com",
+				projectId: "healthcard-97dd6",
+				storageBucket: "healthcard-97dd6.appspot.com",
+				messagingSenderId: "43144653169",
+				appId: "1:43144653169:web:a090e0a62b0c2216916ed0",
+				measurementId: "G-MCVFPTR48L"
+			};
+			firebase.initializeApp(firebaseConfig);
+		</script>
+		<link rel="stylesheet" type="text/css" href="index.css">
+	</head>
+	<body>
+		<header>
+			<ul>
+				<li>Home</li>
+				<li>Patients</li>
+				<li>Notifications</li>
+			</ul>
+		</header>
+		<center>
+			<span id="head">Patient Details</span>
+			<form>
+				<table>
+					<tr>
+						<td>First Name:</td>
+						<td><input type="text" name="fn"/></td>
+					</tr>
+					<tr>
+						<td>Last Name:</td>
+						<td><input type="text" name="ln"/></td>
+					</tr>
+					<tr>
+						<td>Mobile:</td>
+						<td><input type="text" name="mo"/></td>
+					</tr>
+					<tr>
+						<td>City:</td>
+						<td><input type="text" name="ct"/></td>
+					</tr>
+					<tr>
+						<td>State:</td>
+						<td><input type="text" name="st"/></td>
+					</tr>
+				</table>
+			</form>
+		<button onclick="submitdata()">Submit</button>
+		</center>
+		<script>
+			var db=firebase.database();
+			var ref=db.ref();
+			var form=document.forms[0];
+			var inittime=0;
+			ref.child('time').once('value').then(function(snap){
+				inittime=parseInt(snap.val());
+			});
+			function submitdata(argument){
+				var fn=form.fn.value;
+				var ln=form.ln.value;
+				var ct=form.ct.value;
+				var st=form.st.value;
+				var data={
+					firstname:fn,
+					lastname:ln,
+					city:ct,
+					state:st
+				};
+				ref.child('patient/'+(new Date().getTime()-inittime)).set(data);
+			}
+		</script>
+	</body>
+</html>
