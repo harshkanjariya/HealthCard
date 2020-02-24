@@ -46,6 +46,7 @@
 				<li onclick="menuclicked(2)">Doctors</li>
 				<li onclick="menuclicked(3)">Notifications</li>
 			</ul>
+			<div>Logout</div>
 		</header>
 		<center>
 			<div id="patientdiv" class="pages">
@@ -113,6 +114,14 @@
 						<tr>
 							<td>Email<span class="require">*</span> :</td>
 							<td><input type="text" name="em"/></td>
+						</tr>
+						<tr>
+							<td>Date of birth :</td>
+							<td><input type="date" name="dob"/></td>
+						</tr>
+						<tr>
+							<td>Address :</td>
+							<td><input type="text" name="addr"/></td>
 						</tr>
 						<tr>
 							<td>City<span class="require">*</span> :</td>
@@ -213,36 +222,66 @@
 						data.weight=we;
 					ref.child('patient/'+(new Date().getTime()-inittime)).set(data).then(function(snap){
 						pform.reset();
+						menuclicked(0);
 					});
 				}
 			}
 			function adddoctor(){
-				var un=ldform.id.value;
-				var ps=ldform.ps.value;
-				if(un.length==0){
-					ldform.un.focus();
+				var nm=dform.nm.value;
+				var ph=dform.ph.value;
+				var em=dform.em.value;
+				var dob=dform.dob.value;
+				var addr=dform.addr.value;
+				var ct=dform.ct.value;
+				var st=dform.st.value;
+				var nt=dform.nt.value;
+				var ps=dform.ps.value;
+				var rps=dform.rps.value;
+				if(nm.length==0){
+					dform.nm.focus();
+				}
+				else if(ph.length==0){
+					dform.ph.focus();
+				}
+				else if(em.length==0){
+					dform.ph.focus();
+				}
+				else if(dob.length==0){
+					dform.dob.focus();
+				}
+				else if(addr.length==0){
+					dform.addr.focus();
+				}
+				else if(ct.length==0){
+					dform.ct.focus();
+				}
+				else if(st.length==0){
+					dform.st.focus();
+				}
+				else if(nt.length==0){
+					dform.nt.focus();
 				}
 				else if(ps.length==0){
-					ldform.ps.focus();
-				}else{
-					var key='';
-					if(un[0]=='H')
-						key='hospital';
-					if(un[0]=='D')
-						key='doctor';
-					if(un[0]=='P')
-						key='patient';
-					if(un[0]=='L')
-						key='lab';
-					ref.child(key+'/'+un.substr(1)).once('value').then(function(snap){
-						var d=snap.val();
-						if(d==null){
-							alert('Username Not Found!');
-						}else if(d!=ps){
-							alert('Password incorrect!');
-						}else{
-							console.log('logged in');
-						}
+					dform.ps.focus();
+				}
+				else if(rps!=ps){
+					dform.rps.focus();
+				}
+				else{
+					var data={
+						name:nm,
+						phone:ph,
+						dob:dob,
+						email:em,
+						address:addr,
+						city:ct,
+						state:st,
+						nation:nt,
+						password:ps
+					};
+					ref.child('doctor/'+(new Date().getTime()-inittime)).set(data).then(function(snap){
+						dform.reset();
+						menuclicked(0);
 					});
 				}
 			}
