@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/profileappbar">
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Profile"
+            android:id="@+id/profiletoolbar"
+            app:titleTextColor="@android:color/white"/>
+    </com.google.android.material.appbar.AppBarLayout>
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/profileappbar">
+        <TableRow>
+            <TextView android:text="Id"
+                android:padding="5dp"
+                android:textStyle="bold"/>
+            <TextView android:id="@+id/pid"
+                android:padding="5dp"/>
+        </TableRow>
+        <TableRow>
+            <TextView android:text="Name"
+                android:padding="5dp"
+                android:textStyle="bold"/>
+            <TextView android:id="@+id/naam"
+                android:padding="5dp"/>
+        </TableRow>
+        <TableRow>
+            <TextView android:text="Phone"
+                android:padding="5dp"
+                android:textStyle="bold"/>
+            <TextView android:id="@+id/phone"
+                android:padding="5dp"/>
+        </TableRow>
+        <TableRow>
+            <TextView android:text="Date of Birth"
+                android:padding="5dp"
+                android:textStyle="bold"/>
+            <TextView android:id="@+id/dob"
+                android:padding="5dp"/>
+        </TableRow>
+        <TableRow>
+            <TextView android:text="Email"
+                android:padding="5dp"
+                android:textStyle="bold"/>
+            <TextView android:id="@+id/email"
+                android:padding="5dp"/>
+        </TableRow>
+        <TableRow>
+            <TextView android:text="BloodGroup"
+                android:padding="5dp"
+                android:textStyle="bold"/>
+            <TextView android:id="@+id/bg"
+                android:padding="5dp"/>
+        </TableRow>
+        <TableRow>
+            <TextView android:text="Weight"
+                android:padding="5dp"
+                android:textStyle="bold"/>
+            <TextView android:id="@+id/wei"
+                android:padding="5dp"/>
+        </TableRow>
+        <TableRow>
+            <TextView android:text="Height"
+                android:padding="5dp"
+                android:textStyle="bold"/>
+            <TextView android:id="@+id/hei"
+                android:padding="5dp"/>
+        </TableRow>
+        <TableRow>
+            <TextView android:text="Address"
+                android:padding="5dp"
+                android:textStyle="bold"/>
+            <TextView android:id="@+id/addr"
+                android:padding="5dp"/>
+        </TableRow>
+        <TableRow>
+            <TextView android:text="City"
+                android:padding="5dp"
+                android:textStyle="bold"/>
+            <TextView android:id="@+id/ct"
+                android:padding="5dp"/>
+        </TableRow>
+        <TableRow>
+            <TextView android:text="State"
+                android:padding="5dp"
+                android:textStyle="bold"/>
+            <TextView android:id="@+id/st"
+                android:padding="5dp"/>
+        </TableRow>
+        <TableRow>
+            <TextView android:text="Nation"
+                android:padding="5dp"
+                android:textStyle="bold"/>
+            <TextView android:id="@+id/nt"
+                android:padding="5dp"/>
+        </TableRow>
+    </TableLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

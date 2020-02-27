@@ -15,11 +15,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionbar"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".MedicationActivity" />
+        <activity android:name=".HistoryActivity" />
+        <activity
+            android:name=".NotificationActivity"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".ProfileActivity" />
         <activity android:name=".QrCode" />
         <activity android:name=".HomeActivity" />
         <activity
             android:name=".LoginActivity"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme.NoActionbar" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

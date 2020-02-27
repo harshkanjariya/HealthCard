@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		<title>HealthCard</title>
+		<title>Digital Doctor</title>
 		<script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-auth.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-database.js"></script>
@@ -37,120 +37,229 @@
 			firebase.initializeApp(firebaseConfig);
 		</script>
 		<link rel="stylesheet" type="text/css" href="index.css">
+		<style type="text/css">
+			.pages{
+				background-color: rgba(0,0,0,.2);
+				border-radius: 10px;
+				display: inline-block;
+				padding: 50px;
+				margin-top: 300px;
+			}
+			#logindiv{
+				float: right;
+				margin-right: 200px;
+			}
+			#registerdiv{
+				display: none;
+				float: right;
+				margin-right: 200px;
+			}
+			#registerdiv #head{
+				font-size: 20px;
+			}
+			#secondtable,#thirdtable{
+				display: none;
+			}
+		</style>
 	</head>
 	<body>
 		<header>
+			<img src="digidoc.png">
+			<h2><span style="color: #2ad8ff;">Digital</span> <span style="color: #ff0000;">Doctor</span></h2>
 			<ul>
 				<li onclick="menuclicked(0)">Home</li>
 				<li onclick="menuclicked(1)">Register</li>
 				<li onclick="menuclicked(2)">Login</li>
 			</ul>
 		</header>
-		<center>
-			<div id="logindiv" class="pages">
-				<form>
-					<input type="text" name="id" placeholder="Username"><br>
-					<input type="text" name="ps" placeholder="Password">
-				</form>
-				<button onclick="login()">Login</button>
-			</div>
-			<div id="registerdiv" class="pages">
-				<span id="head">Hospital Details</span>
-				<form>
-					<table>
-						<tr>
-							<td>Name<span class="require">*</span> :</td>
-							<td><input type="text" name="nm"/></td>
-						</tr>
-						<tr>
-							<td>Phone<span class="require">*</span> :</td>
-							<td><input type="text" name="ph"/></td>
-						</tr>
-						<tr>
-							<td>Email<span class="require">*</span> :</td>
-							<td><input type="text" name="em"/></td>
-						</tr>
-						<tr>
-							<td>City<span class="require">*</span> :</td>
-							<td><input type="text" name="ct"/></td>
-						</tr>
-						<tr>
-							<td>State<span class="require">*</span> :</td>
-							<td><input type="text" name="st"/></td>
-						</tr>
-						<tr>
-							<td>Nation<span class="require">*</span> :</td>
-							<td><input type="text" name="nt"/></td>
-						</tr>
-						<tr>
-							<td>Password<span class="require">*</span> :</td>
-							<td><input type="text" name="ps"/></td>
-						</tr>
-						<tr>
-							<td>Retype Password<span class="require">*</span> :</td>
-							<td><input type="text" name="rps"/></td>
-						</tr>
-					</table>
-				</form>
-				<button onclick="submitdata()">Submit</button>
-			</div>
-		</center>
+		<div id="logindiv" class="pages">
+			<form>
+				<input type="text" name="id" placeholder="Username"><br>
+				<input type="text" name="ps" placeholder="Password">
+			</form>
+			<center><button onclick="login()">Login</button></center>
+		</div>
+		<div id="registerdiv" class="pages">
+			<center><span id="head">Hospital Details</span></center>
+			<form>
+				<table id="secondtable">
+					<tr>
+						<td>Address Line 1<span class="require">*</span></td>
+						<td><input type="text" name="addr1"/></td>
+					</tr>
+					<tr>
+						<td>Address Line 2</td>
+						<td><input type="text" name="addr2"/></td>
+					</tr>
+					<tr>
+						<td>State<span class="require">*</span></td>
+						<td><input type="text" name="st"/></td>
+					</tr>
+					<tr>
+						<td>District<span class="require">*</span></td>
+						<td><input type="text" name="dst"/></td>
+					</tr>
+					<tr>
+						<td>City<span class="require">*</span></td>
+						<td><input type="text" name="ct"/></td>
+					</tr>
+					<tr>
+						<td>Nation<span class="require">*</span></td>
+						<td><input type="text" name="nt"/></td>
+					</tr>
+					<tr>
+						<td>Pincode<span class="require">*</span></td>
+						<td><input type="number" name="pin"/></td>
+					</tr>
+				</table>
+				<table id="firsttable">
+					<tr>
+						<td>Hospital Name<span class="require">*</span></td>
+						<td><input type="text" name="nm"/></td>
+					</tr>
+					<tr>
+						<td>Telephone/Landline (STD + NUMBER)<span class="require">*</span></td>
+						<td><input type="text" name="ph"/></td>
+					</tr>
+					<tr>
+						<td>Mobile No.</td>
+						<td><input type="text" name="mb"/></td>
+					</tr>
+					<tr>
+						<td>Emergency No.</td>
+						<td><input type="text" name="eno"/></td>
+					</tr>
+					<tr>
+						<td>Hospital Primary Email id<span class="require">*</span></td>
+						<td><input type="email" name="pem"/></td>
+					</tr>
+					<tr>
+						<td>Hospital Secondary Email id</td>
+						<td><input type="email" name="sem"/></td>
+					</tr>
+				</table>
+				<table id="thirdtable">
+					<tr>
+						<td>Accreditation<span class="require">*</span><br/></td>
+						<td><textarea style="width: 300px;height: 150px;max-width: 300px;max-height: 150px;" name="acc"></textarea></td>
+					</tr>
+					<tr>
+						<td>Registration Number<span class="require">*</span></td>
+						<td><input type="text" name="rg" style="width: 300px;"/></td>
+					</tr>
+					<tr>
+						<td>Certificate<span class="require">*</span></td>
+						<td><input type="file" name="certi" id="certi"/></td>
+					</tr>
+				</table>
+			</form>
+			<center><button id="submitbtn" onclick="submitdata()">Next</button></center>
+		</div>
+		<footer>
+			
+		</footer>
 		<script>
-			var db=firebase.database();
-			var ref=db.ref();
+			var storage=firebase.storage().ref();
+			var ref=firebase.database().ref();
 			var form=document.forms[1];
 			var lform=document.forms[0];
 			var inittime=0;
+			var registrationstep=0;
 			ref.child('time').once('value').then(function(snap){
 				inittime=parseInt(snap.val());
 			});
 			function submitdata(argument){
 				var nm=form.nm.value;
 				var ph=form.ph.value;
-				var em=form.em.value;
+				var mb=form.mb.value;
+				var eno=form.eno.value;
+				var pem=form.pem.value;
+				var sem=form.sem.value;
+
+				var addr1=form.addr1.value;
+				var addr2=form.addr2.value;
 				var ct=form.ct.value;
 				var st=form.st.value;
 				var nt=form.nt.value;
-				var ps=form.ps.value;
-				var rps=form.rps.value;
-				if(nm.length==0){
-					form.nm.focus();
-				}
-				else if(ph.length==0){
-					form.ph.focus();
-				}
-				else if(em.length==0){
-					form.em.focus();
-				}
-				else if(ct.length==0){
-					form.ct.focus();
-				}
-				else if(st.length==0){
-					form.st.focus();
-				}
-				else if(nt.length==0){
-					form.nt.focus();
-				}
-				else if(ps.length==0){
-					form.ps.focus();
-				}
-				else if(rps!=ps){
-					form.rps.focus();
+				var dst=form.dst.value;
+				var pin=form.pin.value;
+
+				var acc=form.acc.value;
+				var rg=form.rg.value;
+				if(registrationstep==0){
+					if(nm.length==0){
+						form.nm.focus();
+					}
+					else if(ph.length==0){
+						form.ph.focus();
+					}
+					else if(pem.length==0){
+						form.pem.focus();
+					}else{
+						$('#firsttable').css('display','none');
+						$('#secondtable').css('display','inline-block');
+						registrationstep=1;
+					}
+				}else if (registrationstep==1){
+					if(addr1.length==0){
+						form.addr1.focus();
+					}
+					else if(dst.length==0){
+						form.dst.focus();
+					}
+					else if(ct.length==0){
+						form.ct.focus();
+					}
+					else if(st.length==0){
+						form.st.focus();
+					}
+					else if(nt.length==0){
+						form.nt.focus();
+					}
+					else if(pin.length==0){
+						form.pin.focus();
+					}else{
+						$('#secondtable').css('display','none');
+						$('#thirdtable').css('display','inline-block');
+						registrationstep=2;
+					}
+				}else if (registrationstep==2){
+					if (acc.length==0){
+						form.acc.focus();
+					}else if(rg.length==0){
+						form.rg.focus();
+					}else if(! $('#certi').prop('files')[0]){
+						alert('upload certificate');
+					}else{
+						$('#thirdtable').css('display','none');
+						$('#submitbtn').html('Submit');
+						registrationstep=3;
+					}
 				}else{
 					var data={
 						name:nm,
-						password:ps,
 						phone:ph,
-						email:em,
-						city:ct,
+						mobile:mb,
+						emergency_no:eno,
+						primary_email:pem,
+						secondary_email:sem,
+						addr1:addr1,
+						addr2:addr2,
+						district:dst,
 						state:st,
-						nation:nt
+						city:ct,
+						pincode:pin,
+						nation:nt,
+						accreditation:acc,
+						registration_no:rg
 					};
 					var dt=new Date().getTime()-inittime;
-					ref.child('hospital/'+dt).set(data).then(function(snap){
-						var cuki='health=H'+dt+'; expires='+(new Date(9999999999999).toGMTString())+'; path=/';
-						document.cookie=cuki;
-						location.replace('Hospital/');
+					storage.child('/certificates/'+dt+'.jpg').put($('#certi').prop('files')[0]).then(function(snap){
+						ref.child('hospital/'+dt).set(data).then(function(snap){
+							var cuki='health=H'+dt+'; expires='+(new Date(9999999999999).toGMTString())+'; path=/';
+							document.cookie=cuki;
+							location.replace('Hospital/');
+						});
 					});
 				}
 			}

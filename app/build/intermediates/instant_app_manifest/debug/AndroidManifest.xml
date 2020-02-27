@@ -48,11 +48,17 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme.NoActionbar" >
+        <activity android:name="com.harsh.healthcard.MedicationActivity" />
+        <activity android:name="com.harsh.healthcard.HistoryActivity" />
+        <activity
+            android:name="com.harsh.healthcard.NotificationActivity"
+            android:theme="@style/AppTheme" />
+        <activity android:name="com.harsh.healthcard.ProfileActivity" />
         <activity android:name="com.harsh.healthcard.QrCode" />
         <activity android:name="com.harsh.healthcard.HomeActivity" />
         <activity
             android:name="com.harsh.healthcard.LoginActivity"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme.NoActionbar" />
         <activity android:name="com.harsh.healthcard.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

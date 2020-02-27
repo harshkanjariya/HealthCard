@@ -18,93 +18,148 @@
             android:id="@+id/hometoolbar"
             app:titleTextColor="@android:color/white"/>
     </com.google.android.material.appbar.AppBarLayout>
-    <TableLayout
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="350dp"
+        android:id="@+id/homeicon"
+        android:src="@drawable/digidoc"
+        app:layout_constraintTop_toBottomOf="@+id/homeappbar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/homeappbar">
-        <TableRow>
-            <TextView android:text="Id"
-                android:padding="5dp"
-                android:textStyle="bold"/>
-            <TextView android:id="@+id/pid"
-                android:padding="5dp"/>
-        </TableRow>
-        <TableRow>
-            <TextView android:text="Name"
-                android:padding="5dp"
-                android:textStyle="bold"/>
-            <TextView android:id="@+id/naam"
-                android:padding="5dp"/>
-        </TableRow>
-        <TableRow>
-            <TextView android:text="Phone"
-                android:padding="5dp"
-                android:textStyle="bold"/>
-            <TextView android:id="@+id/phone"
-                android:padding="5dp"/>
-        </TableRow>
-        <TableRow>
-            <TextView android:text="Date of Birth"
-                android:padding="5dp"
-                android:textStyle="bold"/>
-            <TextView android:id="@+id/dob"
-                android:padding="5dp"/>
-        </TableRow>
-        <TableRow>
-            <TextView android:text="Email"
-                android:padding="5dp"
-                android:textStyle="bold"/>
-            <TextView android:id="@+id/email"
-                android:padding="5dp"/>
-        </TableRow>
-        <TableRow>
-            <TextView android:text="BloodGroup"
-                android:padding="5dp"
-                android:textStyle="bold"/>
-            <TextView android:id="@+id/bg"
-                android:padding="5dp"/>
-        </TableRow>
-        <TableRow>
-            <TextView android:text="Weight"
-                android:padding="5dp"
-                android:textStyle="bold"/>
-            <TextView android:id="@+id/wei"
-                android:padding="5dp"/>
-        </TableRow>
-        <TableRow>
-            <TextView android:text="Height"
-                android:padding="5dp"
-                android:textStyle="bold"/>
-            <TextView android:id="@+id/hei"
-                android:padding="5dp"/>
-        </TableRow>
-        <TableRow>
-            <TextView android:text="Address"
-                android:padding="5dp"
-                android:textStyle="bold"/>
-            <TextView android:id="@+id/addr"
-                android:padding="5dp"/>
-        </TableRow>
-        <TableRow>
-            <TextView android:text="City"
-                android:padding="5dp"
-                android:textStyle="bold"/>
-            <TextView android:id="@+id/ct"
-                android:padding="5dp"/>
-        </TableRow>
-        <TableRow>
-            <TextView android:text="State"
-                android:padding="5dp"
-                android:textStyle="bold"/>
-            <TextView android:id="@+id/st"
-                android:padding="5dp"/>
-        </TableRow>
-        <TableRow>
-            <TextView android:text="Nation"
-                android:padding="5dp"
-                android:textStyle="bold"/>
-            <TextView android:id="@+id/nt"
-                android:padding="5dp"/>
-        </TableRow>
-    </TableLayout>
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/homeicon"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:cardElevation="4dp"
+                app:cardUseCompatPadding="true"
+                android:layout_margin="5dp"
+                android:onClick="openprofile">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp">
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:id="@+id/profileicon"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/personvector"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/profileicon"
+                        android:layout_marginTop="20dp"
+                        android:layout_centerHorizontal="true"
+                        android:text="Profile"/>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true"
+                android:layout_margin="5dp"
+                android:onClick="opennotification">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/notificationcount"
+                        android:background="@drawable/round_corners"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:textColor="@android:color/white"
+                        android:padding="5dp"
+                        android:visibility="gone"
+                        android:layout_alignParentRight="true"/>
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:id="@+id/notificationicon"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/notificationimage"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/notificationicon"
+                        android:layout_marginTop="20dp"
+                        android:layout_centerHorizontal="true"
+                        android:text="Notification"/>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:cardElevation="4dp"
+                app:cardUseCompatPadding="true"
+                android:layout_margin="5dp"
+                android:onClick="openhistory">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp">
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:id="@+id/historyicon"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/reportimage"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/historyicon"
+                        android:layout_marginTop="20dp"
+                        android:layout_centerHorizontal="true"
+                        android:text="History"/>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true"
+                android:layout_margin="5dp"
+                android:onClick="openmedication">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp">
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:id="@+id/currenticon"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/medicineimage"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/currenticon"
+                        android:layout_marginTop="20dp"
+                        android:layout_centerHorizontal="true"
+                        android:text="Current Medication"/>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

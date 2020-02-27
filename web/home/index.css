@@ -1,40 +1,58 @@
 body{
 	font-family: sans-serif;
 	margin: 0px;
-}
-input{
-	font-size: 18px;
+	background: url('1.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 input:focus{
 	outline: none;
 }
 header{
 	width: 100vw;
-	height: 50px;
-	background: whitesmoke;
+	height: 120px;
+	background: white;
 	position: fixed;
 	top: 0px;
 	box-shadow: 0px 1px 10px #ccc;
 }
+header img{
+	width: 120px;
+	height: 120px;
+	float: left;
+	margin-left: 100px;
+}
+header h2{
+	display: inline-block;
+	font-size: 40px;
+}
 header ul{
+	float: right;
 	list-style-type: none;
-	position: fixed;
-	right: 0px;
-	margin: 0px 100px;
+	margin: 35px 100px 0px 100px;
 }
 header ul li{
 	float: left;
 	height: 50px;
-	background: whitesmoke;
+	background: white;
 	cursor: default;
 	line-height: 50px;
+	font-size: 20px;
 	padding: 0px 30px;
 	transition: 1s;
 }
 header ul li:hover{
-	background: white;
+	background: #ccc;
 }
-input{
+footer{
+	background-color: #666;
+	width: 100vw;
+	height: 50px;
+	position: fixed;
+	bottom: 0px;
+}
+input,textarea{
+	font-size: 18px;
 	padding: 5px;
 	border-radius: 5px;
 	margin: 5px;
@@ -47,14 +65,4 @@ button{
 	border-radius: 5px;
 	padding: 5px;
 	font-size: 18px;
-}
-#logindiv{
-	margin-top: 100px;
-}
-#registerdiv{
-	display: none;
-	margin-top: 100px;
-}
-#registerdiv #head{
-	font-size: 20px;
 }

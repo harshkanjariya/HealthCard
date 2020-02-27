@@ -1424,6 +1424,7 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable digidoc
 drawable flag_afghanistan
 drawable flag_aland_islands
 drawable flag_albania
@@ -1684,6 +1685,9 @@ drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
+drawable loading
+drawable logout_icon
+drawable medicineimage
 drawable mtrl_dialog_background
 drawable mtrl_dropdown_arrow
 drawable mtrl_ic_arrow_drop_down
@@ -1705,8 +1709,12 @@ drawable notification_icon_background
 drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
+drawable notificationimage
 drawable notify_panel_notification_icon_bg
+drawable personvector
 drawable qr
+drawable reportimage
+drawable round_corners
 drawable test_custom_background
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
@@ -1817,6 +1825,7 @@ id country_code_holder_rly
 id country_dialog_lv
 id country_name_tv
 id ct
+id currenticon
 id custom
 id customPanel
 id cut
@@ -1865,9 +1874,11 @@ id group_divider
 id groups
 id hei
 id hideable
+id historyicon
 id home
 id homeAsUp
 id homeappbar
+id homeicon
 id hometoolbar
 id icon
 id icon_group
@@ -1889,7 +1900,10 @@ id line3
 id listMode
 id list_item
 id login_layout
+id loginappbar
 id loginbtn
+id logintoolbar
+id logoutbtn
 id masked
 id media_actions
 id message
@@ -1933,6 +1947,9 @@ id normal
 id notification_background
 id notification_main_column
 id notification_main_column_container
+id notificationcount
+id notificationicon
+id notificationlistview
 id nt
 id number_layout
 id number_screen
@@ -1955,6 +1972,9 @@ id phonelayout
 id pid
 id pin
 id preference_divider_view
+id profileappbar
+id profileicon
+id profiletoolbar
 id progress_circular
 id progress_horizontal
 id qrbtn
@@ -1992,6 +2012,10 @@ id shortcut
 id showCustom
 id showHome
 id showTitle
+id single_not_btn1
+id single_not_btn2
+id single_not_description
+id single_not_title
 id skipCollapsed
 id slide
 id smallLabel
@@ -2134,9 +2158,13 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_history
 layout activity_home
 layout activity_login
 layout activity_main
+layout activity_medication
+layout activity_notification
+layout activity_profile
 layout activity_qrcode
 layout country_code_picker_item_country
 layout country_code_picker_layout_code_picker
@@ -2189,6 +2217,7 @@ layout notification_action
 layout notification_action_tombstone
 layout notification_media_action
 layout notification_media_cancel_action
+layout notification_single_view
 layout notification_template_big_media
 layout notification_template_big_media_custom
 layout notification_template_big_media_narrow
@@ -2219,7 +2248,9 @@ layout text_view_without_line_height
 layout zxing_barcode_scanner
 layout zxing_capture
 menu home_toolbar
+menu profile_toolbar
 mipmap ic_launcher
+mipmap ic_launcher_foreground
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
 raw zone1970

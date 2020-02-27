@@ -3,13 +3,27 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>HealthCard</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<title>Digital Doctor</title>
 		<script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-auth.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-database.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-messaging.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-storage.js"></script>
 		<script>
+			var cuki=document.cookie;
+			var myid='';
+			if(cuki.substr(0,cuki.indexOf('='))=="health"){
+				myid=cuki.substr(cuki.indexOf('=')+1);
+				if(myid.length==0){
+					location.replace('../');
+				}else{
+					myid=myid.substr(1);
+				}
+			}else{
+				// location.replace('../');
+			}
 			var firebaseConfig = {
 				apiKey: "AIzaSyCrxJKJakJcxbXForiLiuwRQJc7FcVrzbg",
 				authDomain: "healthcard-97dd6.firebaseapp.com",
@@ -22,64 +36,249 @@
 			};
 			firebase.initializeApp(firebaseConfig);
 		</script>
-		<link rel="stylesheet" type="text/css" href="index.css">
+		<link rel="stylesheet" type="text/css" href="../index.css">
+		<style type="text/css">
+			.pages{
+				background-color: rgba(0,0,0,.2);
+				border-radius: 10px;
+				display: inline-block;
+				padding: 50px;
+				margin-top: 300px;
+			}
+			body{
+				background: url('');
+				background-color: #b3d9ff;
+			}
+			#homelogo{
+				margin-top: 300px;
+				margin-left: 300px;
+				width: 300px;
+				height: 300px;
+				border-radius: 150px;
+				float: left;
+			}
+			#details{
+				margin-top: 320px;
+				margin-left: 200px;
+				float: left;
+			}
+			#details table tr td{
+				font-size: 20px;
+				padding: 10px;
+			}
+			.pages{
+				margin: 0px 0px 0px -400px;
+				display: inline-block;
+				background-color: #00000000;
+				display: none;
+			}
+			#patientdiv{
+				display: inline-block;
+			}
+			#patientdiv{
+				margin: 100px 0px;
+				font-size: 30px;
+			}
+			#patientdiv div{
+				display: inline-block;
+			}
+			#patientdiv table tr td,#patientdiv table tr th{
+				text-align: left;
+				font-size: 20px;
+				padding: 10px;
+			}
+			.card{
+				background-color: #66b3ff;
+				width: 20vw;
+				height: 50px;
+				float: left;
+				margin: 5vw;
+				padding: 20px 0px;
+				border-radius: 10px;
+				display: inline-block;
+			}
+			.card div{
+				background-color: #e6f4ff;
+				width: 100%;
+				height: 150px;
+				margin-top: 20px;
+				border-radius: 0px 0px 10px 10px;
+			}
+			#patientreset{
+				margin-top: 100px;
+				font-size: 30px;
+				padding: 10px;
+			}
+			i{
+				border-radius: 10px;
+				padding: 5px;
+				border: 2px solid black;
+				float: right;
+				margin-right: 10px;
+			}
+		</style>
 	</head>
 	<body>
 		<header>
+			<img src="../digidoc.png">
+			<h2><span style="color: #2ad8ff;">Digital</span> <span style="color: #ff0000;">Doctor</span></h2>
 			<ul>
-				<li>Home</li>
-				<li>Patients</li>
-				<li>Notifications</li>
+				<li onclick="myclick(1)">Profile</li>
+				<li onclick="myclick(2)">Patients</li>
+				<li onclick="myclick(3)">Patient History</li>
+				<li onclick="myclick(4)">Logout</li>
 			</ul>
 		</header>
 		<center>
-			<span id="head">Patient Details</span>
-			<form>
+			<div class="pages" id="profilediv">
+				<img src="../doctor.jpg" id="homelogo">
+				<div id="details">
+					<table>
+						<tr>
+							<td>Id</td>
+							<td id="myid">Id</td>
+						</tr>
+						<tr>
+							<td>Name</td>
+							<td id="myname">name</td>
+						</tr>
+						<tr>
+							<td>Email</td>
+							<td id="myemail">email</td>
+						</tr>
+						<tr>
+							<td>Date Of Birth</td>
+							<td id="mydob">dob</td>
+						</tr>
+						<tr>
+							<td>Phone</td>
+							<td id="myphone">9876543210</td>
+						</tr>
+						<tr>
+							<td>Address</td>
+							<td id="myaddr">adderss</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="pages" id="patientdiv">
+				<h2>Patient Details</h2>
 				<table>
 					<tr>
-						<td>First Name:</td>
-						<td><input type="text" name="fn"/></td>
+						<th>Id</th>
+						<td id="ptid"><input type="text" id="pid"></td>
+						<td><button onclick="requestpatient()">Request</button></td>
 					</tr>
 					<tr>
-						<td>Last Name:</td>
-						<td><input type="text" name="ln"/></td>
+						<th>Name</th>
+						<td id="ptname"></td>
+						<th>Date Of Birth</th>
+						<td id="ptdob"></td>
 					</tr>
 					<tr>
-						<td>Mobile:</td>
-						<td><input type="text" name="mo"/></td>
-					</tr>
-					<tr>
-						<td>City:</td>
-						<td><input type="text" name="ct"/></td>
-					</tr>
-					<tr>
-						<td>State:</td>
-						<td><input type="text" name="st"/></td>
+						<th>Phone</th>
+						<td id="ptphone"></td>
+						<th>Bloodgroup</th>
+						<td id="ptbg"></td>
 					</tr>
 				</table>
-			</form>
-		<button onclick="submitdata()">Submit</button>
+				<div>
+					<div class="card">Ongoing Treatment<i class="fa fa-plus" onclick="addtreatment()"></i><i class="fa fa-pencil" onclick="edittreat()"></i><div></div></div>
+					<div class="card">Prescription<i class="fa fa-plus" onclick="addpres()"></i><div></div></div>
+					<div class="card">Lab Reports<i class="fa fa-plus" onclick="addlab()"></i><div></div></div>
+					<div class="card">Allergies<i class="fa fa-plus" onclick="addlrg()"></i><div></div></div>
+					<div class="card" onclick="showmed()">Medical History<div></div></div>
+					<div class="card" onclick="showsurg()">Surgical History<div></div></div>
+				</div>
+				<button id="patientreset" onclick="resetpatient()">Reset</button>
+			</div>
+			<div class="pages" id="treatment" style="background-color: yellow; width: 100vw; margin-top: 100px; margin-left: 0px;">
+				
+			</div>
 		</center>
 		<script>
 			var db=firebase.database();
 			var ref=db.ref();
 			var form=document.forms[0];
+			var data='';
 			var inittime=0;
+			var requested='false';
 			ref.child('time').once('value').then(function(snap){
 				inittime=parseInt(snap.val());
 			});
+			ref.child('/doctor/'+myid).on('value',function(snap){
+				data=snap.val();
+				console.log(data);
+				$('#myid').html('D'+myid);
+				$('#myname').html(data.name);
+				$('#myemail').html(data.email);
+				$('#mydob').html(data.dob);
+				$('#myphone').html(data.phone);
+				$('#myaddr').html(data.address);
+			});
+			ref.child('permissions/'+myid).on('value',function(snap){
+				if(requested!='false' && snap.val()[requested]){
+					ref.child('patient/'+requested).once('value').then(function(snap){
+						var pdata=snap.val();
+						console.log(pdata);
+						$('#ptname').html(pdata.name);
+						$('#ptdob').html(pdata.dob);
+						$('#ptphone').html(pdata.phone);
+						$('#ptbg').html(pdata.bloodgroup);
+					});
+				}
+			});
+			function resetpatient(){
+				if (requested!='false'){
+					ref.child('permissions/'+myid+'/'+requested).set(false).then(function(snap){
+						$('#ptname').html('');
+						$('#ptdob').html('');
+						$('#ptphone').html('');
+						$('#ptbg').html('');
+						$('#pid').val('');
+						requested='false';
+					});
+				}
+			}
 			function submitdata(argument){
-				var fn=form.fn.value;
-				var ln=form.ln.value;
-				var ct=form.ct.value;
-				var st=form.st.value;
-				var data={
-					firstname:fn,
-					lastname:ln,
-					city:ct,
-					state:st
-				};
 				ref.child('patient/'+(new Date().getTime()-inittime)).set(data);
+			}
+			function requestpatient(){
+				var srch=$('#pid').val();
+				srch=srch.substr(srch.indexOf('P')+1);
+				ref.child('patient/'+srch).once('value').then(function(snap){
+					if(snap.exists()){
+						requested=srch;
+						ref.child('notifications/'+srch+'/'+(new Date().getTime())).set({
+							docid:myid,
+							description:'Allow Access',
+							title:data.name,
+							type:'docreq',
+							seen:'false'
+						});
+					}else{
+						alert('Patient Not Found!');
+					}
+				});
+			}
+			function myclick(n){
+				$('.pages').hide();
+				switch(n){
+					case 1:
+						$('#profilediv').css('display','inline-block');
+						break;
+					case 2:
+						$('#patientdiv').css('display','inline-block');
+						break;
+					case 4:
+						document.cookie='health=; expires='+(new Date(1).toGMTString())+'; path=/;';
+						window.location.reload();
+						break;
+				}
+			}
+			function addtreatment(){
+				$('#patientdiv').css('display','none');
+				$('#treatment').css('display','inline-block');
 			}
 		</script>
 	</body>

@@ -2,11 +2,13 @@ package com.harsh.healthcard;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -16,6 +18,7 @@ import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -78,7 +81,7 @@ public class LoginActivity extends AppCompatActivity {
             super.onCodeSent(s, forceResendingToken);
             verifycode=s;
             findViewById(R.id.number_screen).animate().translationY(pixel(-1000)).setDuration(1000).start();
-            findViewById(R.id.otp_screen).animate().translationY(0).setDuration(1000).start();
+            findViewById(R.id.otp_screen).animate().translationY(200).setDuration(1000).start();
             if (pd.isShowing())
                 pd.dismiss();
             new CountDownTimer(60000,1000){
@@ -98,7 +101,9 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        setTitle("Login");
+        Toolbar toolbar=findViewById(R.id.logintoolbar);
+        setSupportActionBar(toolbar);
+
         code=findViewById(R.id.contrypicker);
         phone=findViewById(R.id.phone_input);
         otpin=findViewById(R.id.otp_input);
@@ -122,6 +127,8 @@ public class LoginActivity extends AppCompatActivity {
         else
             switch (view.getId()){
                 case R.id.submitbtn:
+                    InputMethodManager inputManager = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    inputManager.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                     final String p=Objects.requireNonNull(phone.getText()).toString();
                     final String c=code.getSelectedCountryCodeWithPlus();
                     if (p.isEmpty()){
@@ -143,6 +150,7 @@ public class LoginActivity extends AppCompatActivity {
                                 }
                             }
                             if(!found){
+                                pd.dismiss();
                                 Snackbar.make(findViewById(R.id.login_layout),"Patient Not Found!",Snackbar.LENGTH_LONG).show();
                             }
                         }
